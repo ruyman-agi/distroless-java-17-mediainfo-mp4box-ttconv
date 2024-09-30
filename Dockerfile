@@ -43,4 +43,3 @@ COPY --from=python-builder /lib64 /lib64
 COPY --from=python-builder /usr/local/bin /usr/local/bin
 COPY --from=python-builder /usr/local/lib /usr/local/lib
 ENV PYTHONPATH="/usr/local/lib/python3.12/site-packages/ttconv:$PYTHONPATH"
-RUN chown root:root -R /bin
