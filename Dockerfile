@@ -36,7 +36,6 @@ RUN pip install --no-cache-dir --upgrade pip && \
 FROM registry.agilecontent.com/docker/distroless-java-17/main:latest
 FROM gcr.io/distroless/java17 
 ADD busybox.tar /bin/
-RUN chown root:root -R /bin
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 COPY --from=builder /dist/MP4Box /dist/mediainfo /usr/bin/
 COPY --from=python-builder /lib /lib
@@ -44,3 +43,4 @@ COPY --from=python-builder /lib64 /lib64
 COPY --from=python-builder /usr/local/bin /usr/local/bin
 COPY --from=python-builder /usr/local/lib /usr/local/lib
 ENV PYTHONPATH="/usr/local/lib/python3.12/site-packages/ttconv:$PYTHONPATH"
+RUN chown root:root -R /bin
