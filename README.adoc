@@ -1,0 +1,25 @@
+= Docker distroless java 17 image w/ mediainfo, mp4box and ttconv
+
+On this repository we have an image based on our version of the Google
+https://github.com/GoogleContainerTools/distroless/[distroless] Java 17 image
+with a busybox binary and the `mediainfo`, `MP4Box` and `ttconv` binaries.
+
+Both binaries are compiled statically on a debian stretch image (the distroless
+image we are using is based on it also, if we compile statically there we don't
+need to copy the requiered libraries, as they are the same as the ones already
+included on the base image).
+
+To buld the `mediainfo` binary we download the CLI source from this
+https://mediaarea.net/en/MediaInfo/Download/Source[page] (right now we are
+using the
+https://mediaarea.net/download/binary/mediainfo/21.03/MediaInfo_CLI_21.03_GNU_FromSource.tar.xz[v21.03]
+source) and compile it using the included `CLI_Compile.sh` script.
+
+To build the `MP4Box` binary we follow the instructions included on the gpac
+https://github.com/gpac/gpac/wiki/GPAC-Build-Guide-for-Linux#mp4box-only[wiki],
+using the source of the
+https://github.com/gpac/gpac/archive/refs/tags/v1.0.1.tar.gz[v1.0.1] version.
+
+To Build the `ttconv` binary we setup python + the tool.
+
+// vim: ts=4:sw=4:et
